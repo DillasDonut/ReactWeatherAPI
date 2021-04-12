@@ -1,29 +1,37 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
 
-  const apiKey = process.env.OPENWEATHER_API_KEY
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${apiKey}`
+function App() {
+  // State
+  const [apiData, setApiData] = useState({});
+  const [state] = useState('paris');
+
+  // API KEY AND URL
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${apiKey}`;
+
+  // Side effect
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => setApiData(data));
+  }, [apiUrl]);
+
+  
+  console.log(state)
+  console.log(apiData.main)
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          {apiData.main ? (
+            <p>{(apiData.main.temp)}&deg;</p>
+          ) : (
+            <h1>Loading</h1>
+          )}
     </div>
   );
-}
+
+};
 
 export default App;
