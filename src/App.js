@@ -5,7 +5,8 @@ import './App.css';
 function App() {
   // State
   const [apiData, setApiData] = useState({});
-  const [state] = useState('paris');
+  const [getState, setGetState] = useState('paris');
+  const [state, setState] = useState('paris');
 
   // API KEY AND URL
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -18,14 +19,37 @@ function App() {
       .then((data) => setApiData(data));
   }, [apiUrl]);
 
+  const inputHandler = (event) => {
+    setGetState(event.target.value);
+  };
+
+  const submitHandler = () => {
+    setState(getState);
+  };
   
-  console.log(state)
+  console.log("base state : " + state)
   console.log(apiData.main)
 
   return (
     <div className="App">
           {apiData.main ? (
-            <p>{(apiData.main.temp)}&deg;</p>
+          <div>
+            <h1>{apiData.name}</h1>
+            <br/>
+            <h1>{(apiData.main.temp)}&deg;</h1>
+            <br/>
+            <input
+              type="text"
+              id="location-name"
+              class="form-control"
+              onChange={inputHandler}
+              value={getState}
+            />
+            <button onClick={submitHandler}>
+              Search
+            </button>
+          </div>
+
           ) : (
             <h1>Loading</h1>
           )}
