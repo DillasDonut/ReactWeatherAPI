@@ -26,6 +26,22 @@ function App() {
   const submitHandler = () => {
     setState(getState);
   };
+
+  const kelvinToFarenheit = (k) => {
+    return (k - 273.15).toFixed(2);
+  };
+
+  function TempRendering(){
+    if(apiData.main.temp < "283.15"){
+      return(
+        <h1 color="blue">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
+      )
+    } else {
+      return(
+        <h1 color="red">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
+      )
+    }
+  }
   
   console.log("base state : " + state)
   console.log(apiData.main)
@@ -35,8 +51,7 @@ function App() {
           {apiData.main ? (
           <div>
             <h1>{apiData.name}</h1>
-            <br/>
-            <h1>{(apiData.main.temp)}&deg;</h1>
+            <TempRendering/>   
             <br/>
             <input
               type="text"
