@@ -17,30 +17,34 @@ function App() {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => setApiData(data));
-  }, [apiUrl]);
+  }, [apiUrl])
 
   const inputHandler = (event) => {
-    setGetState(event.target.value);
-  };
+    setGetState(event.target.value)
+  }
 
   const submitHandler = () => {
-    setState(getState);
-  };
+    setState(getState)
+  }
 
   const kelvinToFarenheit = (k) => {
-    return (k - 273.15).toFixed(2);
-  };
+    return (k - 273.15).toFixed(2)
+  }
+
+  const milesToKm = (i) => {
+    return (i * 1.609).toFixed(1)
+  }
 
   function TempRendering(){
     if(apiData.main.temp <= "283.15"){
       return(
         <h1 color="blue">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
       ) 
-    } if (apiData.main.temp > "283.16"){
+    } if (apiData.main.temp > "283.16" && apiData.main.temp <= "293.14" ){
       return (
         <h1 color="green">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
       )
-    } if (apiData.main.temp > "293.15") {
+    } else {
       return(
         <h1 color="red">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
       )
@@ -48,7 +52,7 @@ function App() {
   }
   
   console.log("base state : " + state)
-  console.log(apiData.main)
+  console.log(apiData.weather)
 
   return (
     <div className="App">
@@ -56,6 +60,9 @@ function App() {
           <div>
             <h1>{apiData.name}</h1>
             <TempRendering/>   
+            <h1> description : {apiData.weather[0].description}</h1>
+            <h1> min : {kelvinToFarenheit(apiData.main.temp_min)} / max : {kelvinToFarenheit(apiData.main.temp_max)}</h1>
+            <h1> wind : {milesToKm(apiData.wind.speed)}km/h</h1>
             <br/>
             <input
               type="text"
