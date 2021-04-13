@@ -32,11 +32,15 @@ function App() {
   };
 
   function TempRendering(){
-    if(apiData.main.temp < "283.15"){
+    if(apiData.main.temp <= "283.15"){
       return(
         <h1 color="blue">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
+      ) 
+    } if (apiData.main.temp > "283.16"){
+      return (
+        <h1 color="green">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
       )
-    } else {
+    } if (apiData.main.temp > "293.15") {
       return(
         <h1 color="red">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
       )
