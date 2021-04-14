@@ -7,17 +7,35 @@ function App() {
   const [apiData, setApiData] = useState({});
   const [getState, setGetState] = useState('paris');
   const [state, setState] = useState('paris');
+  const [httpStatusCode, setHttpStatusCode] = useState('paris');
 
   // API KEY AND URL
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${apiKey}`;
+  const resStatus = apiUrl.status
 
   // Side effect
   useEffect(() => {
     fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => setApiData(data));
+    .then((res) => {
+      if(!res.ok){
+        console.log('error 404')
+      } 
+      if(res.ok){
+        return res.json()
+      }
+    })
+      /* .then((res) => res.json()) */
+      .then((data) => setApiData(data))
+      
+      
   }, [apiUrl])
+
+  function StatusError(){
+    if (httpStatusCode === 404) {
+      return <h2>STATUS ERROR : 404</h2>
+    }
+  }
 
   const inputHandler = (event) => {
     setGetState(event.target.value)
@@ -28,7 +46,7 @@ function App() {
   }
 
   const kelvinToFarenheit = (k) => {
-    return (k - 273.15).toFixed(2)
+    return (k - 273.15).toFixed(1)
   }
 
   const milesToKm = (i) => {
@@ -50,19 +68,29 @@ function App() {
       )
     }
   }
+
+  // function HandleCityRejetion(){
+  //   if(state === 'null'){
+  //     return (
+  //       <h2>Your city seems to not exist in the OpenWeather database ! Check for spelling mistakes or try for another city.</h2>
+  //     )
+  //   }
+  // }
   
   console.log("base state : " + state)
-  console.log(apiData.weather)
+  console.log(resStatus)
+
 
   return (
     <div className="App">
           {apiData.main ? (
           <div>
             <h1>{apiData.name}</h1>
+            
             <TempRendering/>   
-            <h1> description : {apiData.weather[0].description}</h1>
-            <h1> min : {kelvinToFarenheit(apiData.main.temp_min)} / max : {kelvinToFarenheit(apiData.main.temp_max)}</h1>
-            <h1> wind : {milesToKm(apiData.wind.speed)}km/h</h1>
+            <h2> description : {apiData.weather[0].description}</h2>
+            <h2> min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C</h2>
+            <h2> wind : {milesToKm(apiData.wind.speed)} Km/h</h2>
             <br/>
             <input
               type="text"
@@ -77,8 +105,11 @@ function App() {
           </div>
 
           ) : (
+          <div>
             <h1>Loading</h1>
-          )}
+ {/*            <HandleCityRejetion /> */}
+          </div>
+          )} 
     </div>
   );
 
