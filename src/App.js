@@ -16,26 +16,22 @@ function App() {
 
   // Side effect
   useEffect(() => {
-    fetch(apiUrl)
+    fetch(apiUrl)  
     .then((res) => {
-      if(!res.ok){
+    const ApiError = (!res.ok)
+    const ApiOk = (res.ok)
+      if(ApiError){
         console.log('error 404')
       } 
-      if(res.ok){
+      if(ApiOk){
         return res.json()
       }
     })
       /* .then((res) => res.json()) */
       .then((data) => setApiData(data))
-      
-      
   }, [apiUrl])
 
-  function StatusError(){
-    if (httpStatusCode === 404) {
-      return <h2>STATUS ERROR : 404</h2>
-    }
-  }
+
 
   const inputHandler = (event) => {
     setGetState(event.target.value)
@@ -69,6 +65,14 @@ function App() {
     }
   }
 
+   /*  function HandleError(){
+    if (apiData == 'undefined') {
+      return (
+         <h2>STATUS ERROR : 404</h2>
+      )
+    }
+  } */
+
   // function HandleCityRejetion(){
   //   if(state === 'null'){
   //     return (
@@ -86,7 +90,6 @@ function App() {
           {apiData.main ? (
           <div>
             <h1>{apiData.name}</h1>
-            
             <TempRendering/>   
             <h2> description : {apiData.weather[0].description}</h2>
             <h2> min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C</h2>
@@ -107,8 +110,8 @@ function App() {
           ) : (
           <div>
             <h1>Loading</h1>
- {/*            <HandleCityRejetion /> */}
-          </div>
+          
+         </div>
           )} 
     </div>
   );
