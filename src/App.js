@@ -7,7 +7,6 @@ function App() {
   const [apiData, setApiData] = useState({});
   const [getState, setGetState] = useState('paris');
   const [state, setState] = useState('paris');
-  const [httpStatusCode, setHttpStatusCode] = useState('paris');
 
   // API KEY AND URL
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -16,19 +15,18 @@ function App() {
 
   // Side effect
   useEffect(() => {
-    fetch(apiUrl)  
+    fetch(apiUrl)
     .then((res) => {
-    const ApiError = (!res.ok)
-    const ApiOk = (res.ok)
-      if(ApiError){
+      if(!res.ok){
         console.log('error 404')
       } 
-      if(ApiOk){
+      if(res.ok){
         return res.json()
+        .then((data) => setApiData(data))
       }
     })
       /* .then((res) => res.json()) */
-      .then((data) => setApiData(data))
+      /* .then((data) => setApiData(data)) */
   }, [apiUrl])
 
 
@@ -49,6 +47,8 @@ function App() {
     return (i * 1.609).toFixed(1)
   }
 
+  
+
   function TempRendering(){
     if(apiData.main.temp <= "283.15"){
       return(
@@ -65,57 +65,44 @@ function App() {
     }
   }
 
-   /*  function HandleError(){
-    if (apiData == 'undefined') {
+
+
+/*   function IncorrectName(props) {  
+    const isNotCorrect = (apiData === 'undefined')
       return (
-         <h2>STATUS ERROR : 404</h2>
-      )
-    }
+      <h2>Your city name seems to not exist.</h2>
+      )   
   } */
 
-  // function HandleCityRejetion(){
-  //   if(state === 'null'){
-  //     return (
-  //       <h2>Your city seems to not exist in the OpenWeather database ! Check for spelling mistakes or try for another city.</h2>
-  //     )
-  //   }
-  // }
   
-  console.log("base state : " + state)
-  console.log(resStatus)
-
-
-  return (
-    <div className="App">
-          {apiData.main ? (
-          <div>
-            <h1>{apiData.name}</h1>
-            <TempRendering/>   
-            <h2> description : {apiData.weather[0].description}</h2>
-            <h2> min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C</h2>
-            <h2> wind : {milesToKm(apiData.wind.speed)} Km/h</h2>
-            <br/>
-            <input
-              type="text"
-              id="location-name"
-              class="form-control"
-              onChange={inputHandler}
-              value={getState}
-            />
-            <button onClick={submitHandler}>
-              Search
-            </button>
-          </div>
-
-          ) : (
-          <div>
-            <h1>Loading</h1>
-          
-         </div>
-          )} 
-    </div>
-  );
-
+    return (
+      <div className="App">
+            {apiData.main ? (
+              <div>
+              <h1>{apiData.name}</h1>
+              <p></p>
+              <TempRendering/>   
+              <h2> description : {apiData.weather[0].description}</h2>
+              <h2> min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C</h2>
+              <h2> wind : {milesToKm(apiData.wind.speed)} Km/h</h2>
+              <br/>
+              <input
+                type="text"
+                id="location-name"
+                class="form-control"
+                onChange={inputHandler}
+                value={getState}
+              />
+              <button onClick={submitHandler}>
+                Search
+              </button>
+            </div>
+            ) : (
+              <h1>Loading</h1>       
+            )} 
+      </div>
+    );
+            
 };
 
 export default App;
