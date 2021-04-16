@@ -40,3 +40,36 @@ html, body{
     background: #788DD6;
     box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
 }
+
+.SearchGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "left center right";
+  }
+
+    .SGcenter { grid-area: center; }
+    
+    .SGright { grid-area: right; }
+    
+    .SGleft { grid-area: left; }
+  
+
+.AppGrid {
+  display: grid;
+  grid-template-columns: 1fr 3.5fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "AGleft AGcenter AGright";
+}
+
+.AGleft { grid-area: AGleft; }
+
+.AGcenter { grid-area: AGcenter; }
+
+.AGright { grid-area: AGright; }
+
+  
