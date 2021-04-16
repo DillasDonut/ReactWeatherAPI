@@ -6,7 +6,7 @@ function App() {
   // State
   const [apiData, setApiData] = useState({});
   const [getState, setGetState] = useState('paris');
-  const [state, setState, result] = useState('paris');
+  const [state, setState] = useState('paris');
 
   // API KEY AND URL
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -16,7 +16,6 @@ function App() {
   var http = new XMLHttpRequest();
   http.open('HEAD', apiUrl, false);
   http.send();
-  console.log('online status : '+http.status)
   const httpStatus = http.status
 
   // Side effect
@@ -28,7 +27,7 @@ function App() {
         return setApiData(data);
       }
     })
-  }, [apiUrl, setApiData, result])
+  }, [apiUrl, setApiData])
 
 
  
@@ -71,6 +70,10 @@ function App() {
       <div className="App">
             {apiData.main ? (
               <div>
+                
+        <span className="LeftDot"></span>
+        <span className="RightDotTwo"></span>
+        <span className="RightDotOne"></span>
               <h1>{apiData.name}</h1>
               <p></p>
               <TempRendering/>   

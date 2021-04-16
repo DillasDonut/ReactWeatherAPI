@@ -1,0 +1,42 @@
+html, body{
+    height: 100%;
+    max-width: 100%;
+    background: linear-gradient(180deg, #9B6CCA 0%, #4f84ca 100%);
+    overflow : hidden;
+}
+
+.LeftDot{
+    position: absolute;
+    width: 734px;
+    height: 734px;
+    border-radius: 50%;
+    left: -7vw;
+    bottom: -50vh;
+    background: rgba(155, 108, 202, 0.72);
+    box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
+    
+    overflow:hidden;
+}
+
+.RightDotOne{
+    position: absolute;  
+    border-radius: 50%;
+    width: 325px;
+    height: 325px;
+    right: 10vw;
+    top: -11.5vh;
+    background: #788DD6;
+    box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+}
+
+.RightDotTwo{
+    position: absolute;  
+    border-radius: 50%;
+    width: 325px;
+    height: 325px;
+    right: -2vw;
+    top: -9vh;
+    background: #788DD6;
+    box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
+}
