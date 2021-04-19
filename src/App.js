@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+//Logo import
+import littleRain from './icon/little-rain.png';
+import partlyCloud from './icon/partly-cloudy.png';
+import rain from './icon/rain.png';
+import snow from './icon/snow.png';
+import storm from './icon/storm.png';
+import sun from './icon/sun.png'
+
 
 function App() {
   // State
@@ -48,32 +56,44 @@ function App() {
     return (i * 1.609).toFixed(1)
   }
 
-  
+  console.log(apiData.weather[0].id)
 
-  function TempRendering(){
-    if(apiData.main.temp <= "283.15"){
+  function IconRendering(){
+    if(apiData.weather[0].id <= "232"){
       return(
-        <h1 color="blue">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
+        <img src={storm}></img>
       ) 
-    } if (apiData.main.temp > "283.16" && apiData.main.temp <= "293.14" ){
-      return (
-        <h1 color="green">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
-      )
+    } if((apiData.weather[0].id >= "500" && apiData.weather[0].id <= "531") || 
+         (apiData.weather[0].id >= "300" && apiData.weather[0].id <= "321")){
+      return(
+        <img src={rain}></img>
+      ) 
+    } if(apiData.weather[0].id >= "600" && apiData.weather[0].id <= "622"){
+      return(
+        <img src={snow}></img>
+      ) 
+    } if(apiData.weather[0].id == "800" ){
+      return(
+        <img src={sun}></img>
+      ) 
+    } if(apiData.weather[0].id >= "801" && apiData.weather[0].id <= "804"){
+      return(
+        <div>
+        <img src={partlyCloud}></img>        
+        </div>
+      ) 
     } else {
       return(
-        <h1 color="red">{kelvinToFarenheit(apiData.main.temp)}&deg;C</h1>
+        <img src={littleRain}></img>
       )
     }
   }
 
+
     return (
       <div className="App">
             {apiData.main ? (
-              <div>               
-                <span className="LeftDot"></span>
-                <span className="RightDotTwo"></span>
-                <span className="RightDotOne"></span>
-
+              <div>
                 <div className="SearchGrid">                  
                   <div class="SGleft"></div>
                   <div class="SGcenter">
@@ -102,9 +122,9 @@ function App() {
                     <div class="AGleft"></div>
                     <div class="AGcenter">
                       <div className="AppContainer">
-                          <h1>{apiData.name}</h1>
-                          <TempRendering/>   
-                          <h2> description : {apiData.weather[0].description}</h2>
+                          <p className="CityName">{apiData.name}</p>
+                          <IconRendering/>   
+                          <h2> description : {apiData.weather[0].main}</h2>
                           <h2> 
                             min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / 
                             max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C
