@@ -10,60 +10,6 @@ html, body{
     color: rgba(255, 255, 255, 0.897);
 }
 
-.SearchContainer{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 5vh;
-    width:30vw;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 5.5px );
-    -webkit-backdrop-filter: blur( 5.5px );
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.103);
-}
-
-p{
-    text-align: center;
-}
-
-input{
-    background: none;
-    margin: auto;
-    width: 80%;
-    height: 50%;
-    border:none;
-    padding: 11px;
-    padding-left: 25px;
-    color: rgba(255, 255, 255, 0.897);
-    font-family: 'Sen', sans-serif;
-    font-size: 1.1rem;
-}
-
-.AppContainer{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5vh;
-    width: 50vw;
-    height: 65vh;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 5.5px );
-    -webkit-backdrop-filter: blur( 5.5px );
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.103);
-
-    text-align: center;
-}
-
-.CityName{
-    font-size: 7.5rem;
-    margin:25px;
-}
-
-
 
 /*GRID*/
 .SearchGrid {
@@ -97,5 +43,115 @@ input{
 .AGcenter { grid-area: AGcenter; }
 
 .AGright { grid-area: AGright; }
+
+
+
+/*APP*/
+/*Search Bar*/
+.SearchContainer{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vh;
+    width:30vw;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.103);
+}
+
+.ErrorText{
+    text-align: center;
+}
+
+input{
+    background: none;
+    margin: auto;
+    width: 80%;
+    height: 50%;
+    border:none;
+    padding: 11px;
+    padding-left: 25px;
+    color: rgba(255, 255, 255, 0.897);
+    font-family: 'Sen', sans-serif;
+    font-size: 1.1rem;
+}
+
+
+/*Weather part*/
+.AppContainer{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    width: 50vw;
+    height: 65vh;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.103);
+
+    text-align: center;
+}
+
+.CityName{
+    font-size: 5.5rem;
+    margin:24px;
+}
+
+.TempIcon{
+    width: 9.8rem;
+    -webkit-filter: drop-shadow(1px 1px 0 rgb(255, 255, 255))
+        drop-shadow(-1px -1px 0 rgb(255, 255, 255));
+    filter: drop-shadow(1px 1px 0 rgb(255, 255, 255)) 
+        drop-shadow(-1px -1px 0 rgb(255, 255, 255));
+}
+
+.Temp{
+    font-size: 5.5rem;
+    margin:24px
+}
+
+hr{
+    width:37.5vw;
+    color:rgba(255, 255, 255, 0.349);
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+/*Bottom Part*/
+  .TempWindGrid {
+      text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "TWleft TWright";
+  }
+  
+  .TWleft { grid-area: TWleft; }
+  
+  .TWright { grid-area: TWright; }
+  
+
+.WindText, .MaxMinText{
+    font-size: 2.5rem;
+    display: inline;
+    text-align: right;
+}
+
+.WindIcon{
+    display: inline;
+    width: 2.5rem;
+}
+
+
+
+
 
   

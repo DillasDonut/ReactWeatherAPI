@@ -7,14 +7,15 @@ import partlyCloud from './icon/partly-cloudy.png';
 import rain from './icon/rain.png';
 import snow from './icon/snow.png';
 import storm from './icon/storm.png';
-import sun from './icon/sun.png'
+import sun from './icon/sun.png';
+import wind from './icon/wind.png'
 
 
 function App() {
   // State
   const [apiData, setApiData] = useState({});
-  const [getState, setGetState] = useState('paris');
-  const [state, setState] = useState('paris');
+  const [getState, setGetState] = useState('Paris');
+  const [state, setState] = useState('Paris');
 
   // API KEY AND URL
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -56,35 +57,34 @@ function App() {
     return (i * 1.609).toFixed(1)
   }
 
-  console.log(apiData.weather[0].id)
 
   function IconRendering(){
     if(apiData.weather[0].id <= "232"){
       return(
-        <img src={storm}></img>
+        <img className="TempIcon" src={storm}></img>
       ) 
     } if((apiData.weather[0].id >= "500" && apiData.weather[0].id <= "531") || 
          (apiData.weather[0].id >= "300" && apiData.weather[0].id <= "321")){
       return(
-        <img src={rain}></img>
+        <img className="TempIcon" src={rain}></img>
       ) 
     } if(apiData.weather[0].id >= "600" && apiData.weather[0].id <= "622"){
       return(
-        <img src={snow}></img>
+        <img className="TempIcon" src={snow}></img>
       ) 
     } if(apiData.weather[0].id == "800" ){
       return(
-        <img src={sun}></img>
+        <img className="TempIcon" src={sun}></img>
       ) 
     } if(apiData.weather[0].id >= "801" && apiData.weather[0].id <= "804"){
       return(
         <div>
-        <img src={partlyCloud}></img>        
+        <img className="TempIcon" src={partlyCloud}></img>        
         </div>
       ) 
     } else {
       return(
-        <img src={littleRain}></img>
+        <img className="TempIcon" src={littleRain}></img>
       )
     }
   }
@@ -97,9 +97,9 @@ function App() {
                 <div className="SearchGrid">                  
                   <div class="SGleft"></div>
                   <div class="SGcenter">
-                    <div>
+                    <div className="ErrorText">
                     {httpStatus===404 ? <p>There seems to be a problem with the spelling of the city.</p>
-                     : <p>Enter any city name :</p>}
+                     : <p>Enter any city name</p>}
                     </div>
                     <div class="SearchContainer">
                       <input
@@ -117,23 +117,33 @@ function App() {
                   <div class="SGright"></div>
                 </div>
 
-                <div class="AppGrid">
-                  
-                    <div class="AGleft"></div>
+                <div class="AppGrid">            
                     <div class="AGcenter">
                       <div className="AppContainer">
-                          <p className="CityName">{apiData.name}</p>
-                          <IconRendering/>   
-                          <h2> description : {apiData.weather[0].main}</h2>
-                          <h2> 
-                            min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / 
-                            max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C
-                          </h2>
-                          <h2> wind : {milesToKm(apiData.wind.speed)} Km/h</h2>
+                        <p className="CityName">{apiData.name}</p>
+                        <IconRendering/>   
+                        <p className="Temp"> {kelvinToFarenheit(apiData.main.temp)}&deg;C</p>
+                        <hr/>
+
+                        <div className="TempWindGrid">
+                          <div classname="TWleft"> 
+                            <p className="MaxMinText"> 
+                              {kelvinToFarenheit(apiData.main.temp_min)}&deg;C -
+                              {kelvinToFarenheit(apiData.main.temp_max)}&deg;C
+                            </p>
+                          </div>
+                          <div classname="TWright">
+                            <img className="WindIcon" src={wind} /> 
+                            <p className="WindText">  {milesToKm(apiData.wind.speed)} Km/h</p>
+                          </div>
+                        </div>
                       </div>
-                    <div class="AGright"></div>
+                    </div>
                   </div>
-                </div>
+
+                  
+
+                  
                 
 
                 
