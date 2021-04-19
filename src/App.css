@@ -3,11 +3,30 @@
 html, body{
     height: 100%;
     max-width: 100%;
-    background: rgb(75,192,200);
-    background: linear-gradient(90deg, rgba(75,192,200,1) 0%, rgba(199,121,208,1) 50%, rgba(254,172,94,1) 100%);
-    overflow : hidden;   
+    background: linear-gradient(87deg, #4bc0c8, #c779d0, #feab5d);
+    background-size: 600% 600%;
+    -webkit-animation: LinearAnimation 55s ease infinite;
+    -moz-animation: LinearAnimation 55s ease infinite;
+    animation: LinearAnimation 55s ease infinite;
     font-family: 'Sen', sans-serif;
     color: rgba(255, 255, 255, 0.897);
+}
+
+/*BACKGROUND ANIMATION*/
+@-webkit-keyframes LinearAnimation {
+    0%{background-position:0% 87%}
+    50%{background-position:100% 14%}
+    100%{background-position:0% 87%}
+}
+@-moz-keyframes LinearAnimation {
+    0%{background-position:0% 87%}
+    50%{background-position:100% 14%}
+    100%{background-position:0% 87%}
+}
+@keyframes LinearAnimation {
+    0%{background-position:0% 87%}
+    50%{background-position:100% 14%}
+    100%{background-position:0% 87%}
 }
 
 
@@ -22,10 +41,8 @@ html, body{
       "left center right";
   }
 
-    .SGcenter { grid-area: center; }
-    
-    .SGright { grid-area: right; }
-    
+    .SGcenter { grid-area: center; }    
+    .SGright { grid-area: right; }    
     .SGleft { grid-area: left; }
   
 
@@ -68,15 +85,29 @@ html, body{
 
 input{
     background: none;
-    margin: auto;
     width: 80%;
     height: 50%;
     border:none;
-    padding: 11px;
     padding-left: 25px;
+    margin-bottom: 250px;
     color: rgba(255, 255, 255, 0.897);
     font-family: 'Sen', sans-serif;
     font-size: 1.1rem;
+    display: inline-flex;
+    margin: 0 auto;
+}
+
+button{
+    border: 0;
+    background: transparent;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.SearchIcon{
+    
 }
 
 
@@ -86,8 +117,8 @@ input{
     margin-left: auto;
     margin-right: auto;
     margin-top: 5vh;
-    width: 50vw;
-    height: 65vh;
+    width: 924px;
+    height: 604px;
     background: rgba( 255, 255, 255, 0.25 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 5.5px );
@@ -117,7 +148,8 @@ input{
 }
 
 hr{
-    width:37.5vw;
+    text-align: center;
+    width:40vw;
     color:rgba(255, 255, 255, 0.349);
     border: 2px solid;
     border-radius: 10px;
@@ -125,7 +157,7 @@ hr{
 
 /*Bottom Part*/
   .TempWindGrid {
-      text-align: center;
+    text-align: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;

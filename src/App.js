@@ -9,6 +9,7 @@ import snow from './icon/snow.png';
 import storm from './icon/storm.png';
 import sun from './icon/sun.png';
 import wind from './icon/wind.png'
+import search from './icon/search.png'
 
 
 function App() {
@@ -109,8 +110,8 @@ function App() {
                         onChange={inputHandler}
                         value={getState}
                       />
-                      <button onClick={submitHandler}>
-                        Search
+                      <button onClick={submitHandler} type="submit">
+                        <img className="SearchIcon" src={search} alt="submit"/>
                       </button>
                     </div>
                   </div>
