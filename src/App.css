@@ -1,47 +1,42 @@
 html, body{
     height: 100%;
     max-width: 100%;
-    background: linear-gradient(180deg, #9B6CCA 0%, #4f84ca 100%);
+    background: rgb(75,192,200);
+    background: linear-gradient(90deg, rgba(75,192,200,1) 0%, rgba(199,121,208,1) 50%, rgba(254,172,94,1) 100%);
     overflow : hidden;
 }
 
-.LeftDot{
-    position: absolute;
-    width: 734px;
-    height: 734px;
-    border-radius: 50%;
-    left: -7vw;
-    bottom: -50vh;
-    background: rgba(155, 108, 202, 0.72);
-    box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
-    
-    overflow:hidden;
+
+.AppContainer{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    width: 55vw;
+    height: 70vh;
+    background: rgba(255, 255, 255, 0.363);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(40px);
+    border-radius: 20px;
 }
 
-.RightDotOne{
-    position: absolute;  
-    border-radius: 50%;
-    width: 325px;
-    height: 325px;
-    right: 10vw;
-    top: -11.5vh;
-    background: #788DD6;
-    box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
+.SearchContainer{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vh;
+    width:30vw;
+    background: rgba(255, 255, 255, 0.363);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(40px);
+    border-radius: 20px;
 }
 
-.RightDotTwo{
-    position: absolute;  
-    border-radius: 50%;
-    width: 325px;
-    height: 325px;
-    right: -2vw;
-    top: -9vh;
-    background: #788DD6;
-    box-shadow: 4px 0px 7px 2px rgba(0, 0, 0, 0.15);
-}
 
+
+/*GRID*/
 .SearchGrid {
+    margin-top:7.5vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -58,12 +53,12 @@ html, body{
   
 
 .AppGrid {
-  display: grid;
-  grid-template-columns: 1fr 3.5fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "AGleft AGcenter AGright";
+    display: grid;
+    grid-template-columns: 1fr 3.5fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "AGleft AGcenter AGright";
 }
 
 .AGleft { grid-area: AGleft; }

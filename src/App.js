@@ -78,37 +78,42 @@ function App() {
                   <div class="SGleft"></div>
                   <div class="SGcenter">
                     <div>
-                    {httpStatus===404 ? <p>There seems to be a problem with the spelling of the city.</p> : <p>Enter any city name :</p>}
+                    {httpStatus===404 ? <p>There seems to be a problem with the spelling of the city.</p>
+                     : <p>Enter any city name :</p>}
                     </div>
-                    <input
-                      type="text"
-                      id="location-name"
-                      class="form-control"
-                      onChange={inputHandler}
-                      value={getState}
-                    />
-                    <button onClick={submitHandler}>
-                      Search
-                    </button>
+                    <div class="SearchContainer">
+                      <input
+                        type="text"
+                        id="location-name"
+                        class="form-control"
+                        onChange={inputHandler}
+                        value={getState}
+                      />
+                      <button onClick={submitHandler}>
+                        Search
+                      </button>
+                    </div>
                   </div>
                   <div class="SGright"></div>
                 </div>
 
                 <div class="AppGrid">
-                  <div class="AGleft"></div>
-                  <div class="AGcenter">
-                    <h1>{apiData.name}</h1>
-                    <TempRendering/>   
-                    <h2> description : {apiData.weather[0].description}</h2>
-                    <h2> 
-                      min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / 
-                      max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C
-                    </h2>
-                    <h2> wind : {milesToKm(apiData.wind.speed)} Km/h</h2>
+                  
+                    <div class="AGleft"></div>
+                    <div class="AGcenter">
+                      <div className="AppContainer">
+                          <h1>{apiData.name}</h1>
+                          <TempRendering/>   
+                          <h2> description : {apiData.weather[0].description}</h2>
+                          <h2> 
+                            min : {kelvinToFarenheit(apiData.main.temp_min)}&deg;C / 
+                            max : {kelvinToFarenheit(apiData.main.temp_max)}&deg;C
+                          </h2>
+                          <h2> wind : {milesToKm(apiData.wind.speed)} Km/h</h2>
+                      </div>
+                    <div class="AGright"></div>
                   </div>
-                  <div class="AGright"></div>
                 </div>
-
                 
 
                 
