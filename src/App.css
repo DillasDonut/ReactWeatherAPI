@@ -40,11 +40,10 @@ html, body{
     grid-template-areas:
       "left center right";
   }
-
+ 
+    .SGright { grid-area: right; } 
     .SGcenter { grid-area: center; }    
-    .SGright { grid-area: right; }    
     .SGleft { grid-area: left; }
-  
 
 .AppGrid {
     display: grid;
@@ -56,23 +55,22 @@ html, body{
 }
 
 .AGleft { grid-area: AGleft; }
-
-.AGcenter { grid-area: AGcenter; }
-
+.AGcenter { 
+    grid-area: AGcenter;
+    display: inline-block;
+}
 .AGright { grid-area: AGright; }
-
 
 
 /*APP*/
 /*Search Bar*/
-
 .ErrorText{
     text-align: center;
 }
 
 #location-name{
     padding: 10px;
-    width:25vw;
+    width: 82.5%;
     background: rgba( 255, 255, 255, 0.25 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 5.5px );
@@ -80,6 +78,7 @@ html, body{
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.103);
     padding-left: 25px;
+    margin-right: 12px;
     color: rgba(255, 255, 255, 0.897);
     font-family: 'Sen', sans-serif;
     font-size: 1.1rem;
@@ -94,9 +93,7 @@ html, body{
 }
 
 .Submit{
-    float:left;
     padding: 13.5px;
-    margin-left: 12px;
     background: rgba( 255, 255, 255, 0.25 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 5.5px );
@@ -104,11 +101,12 @@ html, body{
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.103);
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.35s;
 }
 
 .Submit:hover{
     box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.39);
+    border: 1px solid rgba(255, 255, 255, 0.507);
     background: none;
 }
 
@@ -129,7 +127,6 @@ html, body{
     -webkit-backdrop-filter: blur( 5.5px );
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.103);
-
     text-align: center;
 }
 
@@ -187,6 +184,46 @@ hr{
 }
 
 
+/*Media Queries */
+@media (max-width:1642px) {
+    .SearchGrid{
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+}
+
+@media (max-width:955px) {
+    .SGcenter{
+        margin-top: -36px;
+    }
+
+    .ErrorText{
+        font-size: larger;
+    }
+    
+    .SearchGrid{
+        grid-template-columns: 1fr 10fr 1fr;
+    }
+
+    .Submit{
+        float: left;
+    }
+}
+
+@media (max-width:662px) {
+
+    #location-name{
+        width: 65% !important;
+    }
+}
+  
+@media (max-width:977px) {
+
+    .AppContainer{
+        margin-left: 32px;
+        margin-right: 32px;
+        width: 90vw !important;
+    }
+}
 
 
 

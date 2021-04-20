@@ -8,8 +8,7 @@ import rain from './icon/rain.png';
 import snow from './icon/snow.png';
 import storm from './icon/storm.png';
 import sun from './icon/sun.png';
-import wind from './icon/wind.png'
-import search from './icon/search.png'
+import wind from './icon/wind.png';
 
 
 function App() {
