@@ -102,18 +102,19 @@ function App() {
                     {httpStatus===404 ? <p>There seems to be a problem with the spelling of the city.</p>
                      : <p>Enter any city name</p>}
                     </div>
-                    <div class="SearchContainer">
                       <input
+                        className="Search"
                         type="text"
                         id="location-name"
                         class="form-control"
                         onChange={inputHandler}
                         value={getState}
                       />
-                      <button onClick={submitHandler} type="submit">
-                        <img className="SearchIcon" src={search} alt="submit"/>
-                      </button>
-                    </div>
+                      <button
+                        className="Submit"
+                        type="submit"
+                        onClick={submitHandler}
+                      ><span className="TextBtn">Go</span></button>
                   </div>
                   <div class="SGright"></div>
                 </div>
