@@ -104,6 +104,12 @@ html, body{
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.103);
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.Submit:hover{
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.39);
+    background: none;
 }
 
 
